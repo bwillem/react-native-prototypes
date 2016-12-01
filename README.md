@@ -7,6 +7,7 @@ prototyping as part of the [technical design document](https://docs.google.com/a
 * [react-redux](https://github.com/reactjs/react-redux) => standard react bindings for redux.
 * [react-native-router-flux](https://github.com/aksonov/react-native-router-flux) => nice routing and nav library and uses `NavigationExperimental` component.
 * [react-native-elements](https://github.com/react-native-community/react-native-elements) => ui kit used for the sake of rapid prototyping.
+
 #### Testing
 * [enzyme](https://github.com/airbnb/enzyme) => utility to render and manipulate components
 * chai => assertion library
