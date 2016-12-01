@@ -6,7 +6,7 @@
 // - Reducers must return a NEW STATE OBJECT, not a mutated version of the
 //   old state object. If you mutate the state and return that, the reducer
 //   won't return anything. This is what immutable state refers to.
-import { STUDENT_UPDATE } from '../../constants/types';
+import { STUDENT_UPDATE } from '../actionTypes';
 
 const INITIAL_STATE = {
   firstname: '',

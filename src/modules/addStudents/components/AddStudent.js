@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { FormLabel, FormInput, Button } from 'react-native-elements';
+import {
+  FormLabel,
+  FormInput,
+  Button
+} from 'react-native-elements';
 import { studentUpdate } from '../actions'
 
 class AddStudent extends Component {
