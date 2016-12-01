@@ -1,13 +1,26 @@
-# react-native-prototypes
+# react-native-prototypes 📱
+prototyping as part of the [technical design document](https://docs.google.com/a/freshgrade.com/document/d/11UCUE8rAa13-dk36CjuO52TZGPilFPhe_9QxNQfJFQI/edit?usp=sharing) for a cross-platform teacher mobile experience.
 
+### Project blueprint
+#### Building
+* [redux](https://github.com/reactjs/redux) => state management.
+* [react-redux](https://github.com/reactjs/react-redux) => standard react bindings for redux.
+* [react-native-router-flux](https://github.com/aksonov/react-native-router-flux) => nice routing and nav library and uses `NavigationExperimental` component.
+* [react-native-elements](https://github.com/react-native-community/react-native-elements) => ui kit used for the sake of rapid prototyping.
+#### Testing
+* [enzyme](https://github.com/airbnb/enzyme) => utility to render and manipulate components
+* chai => assertion library
+* [jest](https://facebook.github.io/jest/docs/tutorial-react-native.html) => snapshot testing
+
+
+###
+
+
+# The add students module
 ![student list](proto1.anim.gif)
 
 ## Navigation
 This uses [react-native-router-flux](https://github.com/aksonov/react-native-router-flux), a router library that plays nice with redux and uses the React Native Nagivator component.
-
-## Roadmap
-- [ ] Network requests - these will occur within action creators, as per redux convention, and live in their own directory. This will allow us to remove or swap out the network layer without changing anything on the component layer.
-- [ ] Login views and auth - authenticate via FAS, get real user data to start working with
 
 ## Component example
 Let's break this component down a bit
