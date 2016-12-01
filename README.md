@@ -13,17 +13,19 @@ prototyping as part of the [technical design document](https://docs.google.com/a
 * chai => assertion library
 * [jest](https://facebook.github.io/jest/docs/tutorial-react-native.html) => snapshot testing
 
+## Login module
+![login](login.anim.gif)
 
-###
+### Networking
+WIP
 
-
-# The add students module
+## The add students module
 ![student list](proto1.anim.gif)
 
-## Navigation
+### Navigation
 This uses [react-native-router-flux](https://github.com/aksonov/react-native-router-flux), a router library that plays nice with redux and uses the React Native Nagivator component.
 
-## Component example
+### Component example
 Let's break this component down a bit
 ``` JavaScript
 // ES6 module imports from npm modules
@@ -61,7 +63,7 @@ class AddStudent extends Component {
 First we create a new class called AddStudent, which extends React's Component class. Class-based components must have a render method, which returns JSX elements to be parsed into HTML and rendered into the DOM. Some of these JSX elements are part of the react-native library, some are part of a ui kit I'm using. `<View>` is a ubiquitous react-native component, while `FormLabel`, `FormInput`, and `Button` are pre-styled components provided by `react-native-elements` library. When we move forward with a production app, we'll likely make our own group of pre-style components like this, to be reused throughout the app.
 So JSX elements are representations of components. For example, we could import and use `AddStudent` in any other component. Components are passed various props of different data types, some expect objects, some expect functions, etc, depending on the component signature. The `style` prop expects an object of css rules.
 
-## Controlled components
+### Controlled components
 Let's pull this out from the JSX and take a closer look:
 ```
 <FormInput
