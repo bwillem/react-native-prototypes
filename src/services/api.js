@@ -8,7 +8,7 @@ import {
 const CURRENT_USER_SHARD = '';
 
 // Authenticate with the FAS
-export async function authenticate(email, password) {
+export function authenticate (email, password) {
   return fetch(LOGIN_URL, {
     method: 'POST',
     headers: {
@@ -22,16 +22,18 @@ export async function authenticate(email, password) {
 }
 
 // Send auth token to node app
-export async function loginToNodeApp(servingDomain, authorizationCode) {
+export async function loginToNodeApp (servingDomain, authorizationCode) {
   CURRENT_USER_SHARD = servingDomain;
-  return fetch(PROTOCOL + servingDomain + '.app.' + NODE_BASE_URL + '/instantlogin?code=' + authorizationCode + '&servingDomain=' + servingDomain, {
+  let res = await fetch(PROTOCOL + servingDomain + '.app.' + NODE_BASE_URL + '/instantlogin?code=' + authorizationCode + '&servingDomain=' + servingDomain, {
     method: 'GET'
   })
+  return res;
 }
 
 // Fetch user model
-export async function getUser() {
-  return fetch(PROTOCOL + CURRENT_USER_SHARD + '.app.' + USER_URL, {
+export async function getUser () {
+  let res = await fetch(PROTOCOL + CURRENT_USER_SHARD + '.app.' + USER_URL, {
     method: 'GET'
   })
+  return res;
 }

@@ -15,7 +15,12 @@ const RouterComponent = () => {
       </Scene>
 
       <Scene key='welcomeScreen'>
-        <Scene key='welcome' component={Welcome} title="Login Success"/>
+        <Scene
+          key='welcome'
+          component={Welcome}
+          title='Login Success'
+          onRight='Logout'
+        />
       </Scene>
 
       <Scene key='addStudents'>

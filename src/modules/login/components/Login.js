@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet
+} from 'react-native';
 import {
   FormLabel,
-  FormInput,
-  Button,
-  Icon
+  FormInput
 } from 'react-native-elements';
+import { Button } from '../../../uiComponents';
 
 class Login extends Component {
 
   login() {
-    const { email, password } = this.props;
+    const { email, password, loading } = this.props;
+    console.log(email, password);
     this.props.startLogin();
     this.props.loginUser(email, password);
   }
 
-  renderButton() {
-    return this.props.loading ? 'Just a sec' : 'LOGIN';
-  }
-
   render() {
-    return(
-      <View style={{ paddingTop: 40 }}>
+    console.log('top of the render - app redrawn', this.props);
+    return (
+      <View style={styles.container}>
         <FormLabel>EMAIL</FormLabel>
         <FormInput
           value={this.props.email}
@@ -38,16 +39,24 @@ class Login extends Component {
           onChangeText={this.props.passwordChanged}
         />
         <Text style={{ marginTop: 10, marginLeft: 20, color: 'red' }}>{this.props.error}</Text>
-        <Button
-          small
-          backgroundColor='#03A9F4'
-          title={String(this.props.loading)}
-          buttonStyle={{ marginLeft: 18, marginRight: 18, marginTop: 20 }}
-          onPress={this.login.bind(this)}
-        />
+        <Button style={styles.btn} onPress={this.login.bind(this)} isLoading={this.props.loading}>
+          Login
+        </Button>
+        <Text>Sign up!</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 20,
+  },
+  btn: {
+    marginLeft:20,
+    marginRight:20
+  }
+})
 
 export default Login;
