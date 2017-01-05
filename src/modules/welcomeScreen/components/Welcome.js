@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { Card } from 'react-native-elements';
 
 const Welcome = (props) => {
-  console.log(props);
+  console.log('welcome screen', props);
   return(
     <View>
       <Card title='HERE IS SOME DATA!'>

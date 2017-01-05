@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { usernameChanged, passwordChanged, startLogin, loginUser } from '../actions/AuthActions';
+import { usernameChanged } from '../actions/AuthActions';
 import Login from './Login';
 
 const mapStateToProps = ({ auth }) => {
@@ -9,8 +9,5 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
-  usernameChanged,
-  passwordChanged,
-  startLogin,
-  loginUser
+  usernameChanged
 })(Login);

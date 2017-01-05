@@ -4,59 +4,59 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-import {
-  FormLabel,
-  FormInput
-} from 'react-native-elements';
-import { Button } from '../../../uiComponents';
+import I18n from 'react-native-i18n';
+import Translations from '../../../lib/Translations';
+import { Actions } from 'react-native-router-flux';
+import { Button, Input } from '../../../uiComponents';
+import DS from '../../../designSystem';
+
+// Translations
+I18n.fallbacks = true;
+I18n.translations = Translations;
 
 class Login extends Component {
-
-  login() {
-    const { email, password, loading } = this.props;
-    console.log(email, password);
-    this.props.startLogin();
-    this.props.loginUser(email, password);
+  state = {
+    errorMsg: ''
   }
 
-  render() {
-    console.log('top of the render - app redrawn', this.props);
+  validateEmail (email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  goToPasswordScene () {
+    // console.log('this', this);
+    // console.log('this.props', this.props);
+    // Validation action will occur here
+    if ( this.validateEmail(this.props.email) ) {
+      this.setState({ errorMsg: '' });
+      Actions.password();
+    } else {
+      this.setState({ errorMsg: 'That\'s not a proper email address' })
+    }
+  }
+
+  render () {
+    console.log('top of the render - app redrawn', DS.padding);
     return (
-      <View style={styles.container}>
-        <FormLabel>EMAIL</FormLabel>
-        <FormInput
-          value={this.props.email}
-          placeholder='Enter your email address'
+      <View style={ DS.padding(2) }>
+        <Input
+          style={ DS.paddingTop(4) }
+          label='email'
+          value={this.props.value}
+          placeholder={I18n.t('Login.email.placeholder')}
           onChangeText={this.props.usernameChanged}
-          autoCorrect={false}
           autoCapitalize='none'
         />
-        <FormLabel>PASSWORD</FormLabel>
-        <FormInput
-          secureTextEntry
-          value={this.props.password}
-          placeholder='Enter your password'
-          onChangeText={this.props.passwordChanged}
-        />
-        <Text style={{ marginTop: 10, marginLeft: 20, color: 'red' }}>{this.props.error}</Text>
-        <Button style={styles.btn} onPress={this.login.bind(this)} isLoading={this.props.loading}>
-          Login
+        <Button
+          style={ DS.marginTop(2) }
+          onPress={this.goToPasswordScene.bind(this)}>
+          {I18n.t('Login.email.next')}
         </Button>
-        <Text>Sign up!</Text>
+        <Text>{this.state.errorMsg}</Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-  },
-  btn: {
-    marginLeft:20,
-    marginRight:20
-  }
-})
 
 export default Login;
